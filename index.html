@@ -1,41 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinookz's Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F1F5F9;
+      color: #1F2937;
+    }
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+    /* Animated background shapes */
+    .hero-bg {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before, .hero-bg::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-bg::before {
+      width: 200px;
+      height: 200px;
+      background: #3B82F6;
+      top: 10%;
+      left: 5%;
+    }
+    .hero-bg::after {
+      width: 150px;
+      height: 150px;
+      background: #EC4899;
+      bottom: 20%;
+      right: 10%;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Web Developer | Designer | Creator</p>
-  </header>
+<body class="smooth-scroll">
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-white shadow-lg z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-500">Chinookz's Portfolio</h1>
+      <div class="space-x-6">
+        <a href="#about" class="text-gray-600 hover:text-blue-500 transition">About</a>
+        <a href="#projects" class="text-gray-600 hover:text-pink-500 transition">Projects</a>
+      </div>
+    </div>
+  </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a passionate web developer with a love for clean, responsive designs.
-      I enjoy building things that live on the internet.
-    </p>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center hero-bg bg-gradient-to-br from-blue-50 via-pink-50 to-gray-100">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <!-- Left: Profile Image and Social Links -->
+      <div class="md:w-1/3 text-center">
+        <img src="https://ibb.co/ZvcyVRh" alt="Profile" class="w-52 h-52 rounded-full mx-auto shadow-lg border-4 border-blue-100">
+        <div class="mt-6 space-y-4">
+          <a href="https://github.com/chin00kz" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/chanukadw/" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="https://x.com/chin00kz" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Right: Intro Text -->
+      <div class="md:w-2/3 text-center md:text-left">
+        <h2 class="text-5xl font-bold text-gray-800 mb-2">Hi, I'm Chinookz</h2>
+        <p class="text-2xl text-gray-600 mb-4">Building the future, one project at a time</p>
+        <p class="text-xl text-gray-600 mb-6">A Computer Science student passionate about creating innovative web and AI solutions.</p>
+        <div class="flex space-x-4">
+          <a href="#about" class="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-pink-500 transition">Explore My Work</a>
+          <a href="mailto:chinookz.main@gmail.com" class="inline-block px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-blue-500 transition">Get in Touch</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Project One</strong> – A cool website I made</li>
-      <li><strong>Project Two</strong> – A portfolio with animations</li>
-      <li><strong>Project Three</strong> – A simple to-do app</li>
-    </ul>
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+          <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            I'm a Computer Science student at SLIIT, driven by curiosity and a love for technology. 
+            I specialize in web development, machine learning, and crafting intuitive user experiences.
+            I do remote work as a Supplier Relations and Logistics Manager at <a href="https://casper.ca" class="text-blue-500 hover:underline">Casper</a> 
+            and Client Affairs Manager at <a href="https://flamelens.com" class="text-blue-500 hover:underline">FlameLens</a>.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            <strong>Education:</strong> B.S. in Information Technology, SLIIT, Expected Graduation: 2026<br>
+            <strong>Contact:</strong> <a href="mailto:chinookz.main@gmail.com" class="text-blue-500 hover:underline">chinookz.main@gmail.com</a>
+          </p>
+        </div>
+        <div class="md:w-1/2 text-center">
+          <div class="inline-block p-6 bg-blue-50 rounded-lg shadow-lg">
+            <p class="text-blue-500 font-semibold">Professional Roles</p>
+            <p class="text-gray-600">Supplier Relations and Logistics Manager at Casper<br>Client Affairs Manager at FlameLens</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email me at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">My Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Project Card 1 -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">TraviGo</h3>
+          <p class="text-gray-600 mb-4">
+            A full-stack tourism management system built with the MERN stack, allowing users to book hotels, rent vehicles, and hire tour guides, with an admin panel for platform management.
+          </p>
+          <a href="https://github.com/RomeshCG/TraviGo" class="text-pink-500 font-semibold hover:underline">View Project</a>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-pink-500/50 transition">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Lifeline Medical Portal</h3>
+          <p class="text-gray-600 mb-4">
+            A comprehensive platform to streamline healthcare services, facilitating patient care, appointment management, feedback submission, and user administration.
+          </p>
+          <a href="https://github.com/RomeshCG/Lifeline-Online-Medical-Portal" class="text-blue-500 font-semibold hover:underline">View Project</a>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Evently</h3>
+          <p class="text-gray-600 mb-4">
+            A web-based event management system for booking and managing weddings, allowing users to view and update bookings, with admin capabilities to manage events and services.
+          </p>
+          <a href="https://github.com/RomeshCG/Evently" class="text-pink-500 font-semibold hover:underline">View Project</a>
+        </div>
+        <!-- Project Card 4 -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-pink-500/50 transition">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Coinme</h3>
+          <p class="text-gray-600 mb-4">
+            A Kotlin-based Android app for tracking budgets, helping users manage their finances efficiently.
+          </p>
+          <a href="#" class="text-blue-500 font-semibold hover:underline">View Project</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Your Name</p>
+  <!-- Footer -->
+  <footer class="py-8 bg-blue-50 text-center">
+    <p class="text-gray-600">© 2025 Chinookz. All rights reserved.</p>
+    <div class="mt-4 space-x-4">
+      <a href="https://github.com/chin00kz" class="text-gray-600 hover:text-blue-500">GitHub</a>
+      <a href="https://www.linkedin.com/in/chanukadw/" class="text-gray-600 hover:text-pink-500">LinkedIn</a>
+      <a href="https://x.com/chin00kz" class="text-gray-600 hover:text-blue-500">Twitter</a>
+    </div>
   </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
