@@ -5,174 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinookz's Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #F1F5F9;
-      color: #1F2937;
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/chin00kz/chin00kz.github.io/main/C.jpg">
+  <style>    body {
+      font-family: 'Poppins', sans-serif;      background-color: #0B1120;
+      color: #F9FAFB;
+      line-height: 1.6;
+    }
+    .text-gray-400 {
+      color: #D1D5DB !important;
+    }
+    .text-gray-300 {
+      color: #E5E7EB !important;
     }
     .smooth-scroll {
       scroll-behavior: smooth;
     }
     .social-icon:hover {
-      transform: scale(1.2);
-    }
-    /* Animated background shapes */
-    .hero-bg {
+      color: #EC4899;
+    }    .project-card {
       position: relative;
-      overflow: hidden;
+      transition: all 0.3s ease;
+      background: linear-gradient(to bottom right, #151825, #1a1f2e);
+      border: 1px solid transparent;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
-    .hero-bg::before, .hero-bg::after {
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: #EC4899;
+      box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.15);
+    }.profile-frame {
+      position: relative;
+      padding: 3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #EC4899, #8B5CF6);
+      transition: all 0.3s ease;
+    }
+    .profile-frame img {
+      border: 3px solid #1F2937;
+      transition: transform 0.3s ease;
+    }
+    .profile-frame:hover img {
+      transform: scale(1.03);
+    }
+    .name-underline {
+      position: relative;
+      display: inline-block;
+    }    .name-underline::after {
       content: '';
       position: absolute;
-      border-radius: 50%;
-      opacity: 0.2;
-      animation: float 8s ease-in-out infinite;
-    }
-    .hero-bg::before {
-      width: 200px;
-      height: 200px;
-      background: #3B82F6;
-      top: 10%;
-      left: 5%;
-    }
-    .hero-bg::after {
-      width: 150px;
-      height: 150px;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
       background: #EC4899;
-      bottom: 20%;
-      right: 10%;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    .name-underline:hover::after {
+      transform: scaleX(1);
+    }
+    nav {
+      background: linear-gradient(90deg, #0B1120 0%, #1E293B 100%);
+      box-shadow: 0 2px 10px rgba(236, 72, 153, 0.1);
+    }
+    .nav-name:hover {
+      color: #EC4899;
+    }
+    .hero-bg {
+      background-image: radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 70%);
     }
   </style>
 </head>
 <body class="smooth-scroll">
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full bg-white shadow-lg z-10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-blue-500">Chinookz's Portfolio</h1>
-      <div class="space-x-6">
-        <a href="#about" class="text-gray-600 hover:text-blue-500 transition">About</a>
-        <a href="#projects" class="text-gray-600 hover:text-pink-500 transition">Projects</a>
+  <nav class="fixed top-0 w-full py-4 z-10">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-xl font-semibold text-gray-100 nav-name transition-colors duration-300">Chinookz</h1>      <div class="space-x-6">
+        <a href="#projects" class="text-gray-400 hover:text-pink-500 transition-colors duration-300">Projects</a>
       </div>
     </div>
   </nav>
-
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center hero-bg bg-gradient-to-br from-blue-50 via-pink-50 to-gray-100">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-      <!-- Left: Profile Image and Social Links -->
-      <div class="md:w-1/3 text-center">
-        <img src="https://raw.githubusercontent.com/chin00kz/chin00kz.github.io/main/IMG_20250325_161107_650~3.jpg" alt="Profile" class="w-52 h-52 rounded-full mx-auto shadow-lg border-4 border-blue-100 object-cover">
-        <div class="mt-6 space-y-4">
-          <a href="https://github.com/chin00kz" target="_blank" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/chanukadw/" target="_blank" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-          </a>
-          <a href="https://x.com/chin00kz" target="_blank" class="social-icon inline-block text-gray-600 hover:text-blue-500 transition">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-          </a>
+  <section class="min-h-screen flex items-center pt-16 hero-bg">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center gap-12">        <div class="md:w-2/5 flex justify-center">
+          <div class="profile-frame">
+            <img src="https://raw.githubusercontent.com/chin00kz/chin00kz.github.io/main/IMG_20250325_161107_650~3.jpg" alt="Profile" class="w-72 h-72 rounded-full object-cover">
+          </div>
         </div>
-      </div>
-      <!-- Right: Intro Text -->
-      <div class="md:w-2/3 text-center md:text-left">
-        <h2 class="text-5xl font-bold text-gray-800 mb-2">Hi, I'm Chinookz</h2>
-        <p class="text-2xl text-gray-600 mb-4">Building the future, one step at a time</p>
-        <p class="text-xl text-gray-600 mb-6">Tech enthusiast passionate about innovative solutions in web and AI.</p>
-        <div class="flex space-x-4">
-          <a href="#about" class="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-pink-500 transition">Explore My Work</a>
-          <a href="mailto:chinookz.main@gmail.com" class="inline-block px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-blue-500 transition">Get in Touch</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2">
-          <p class="text-gray-600 text-lg leading-relaxed mb-4">
-            I'm a Computing undergraduate at SLIIT, driven by curiosity and a love for technology. 
-            I specialize in Information Technology,
-            I do remote work as a Supplier Relations and Logistics Manager at <a href="https://casper.ca" target="_blank" class="text-blue-500 hover:underline">Casper</a> 
-            and Client Affairs Manager at <a href="https://flamelens.com" target="_blank" class="text-blue-500 hover:underline">FlameLens</a>.
-          </p>
-          <p class="text-gray-600 text-lg leading-relaxed">
-            <strong>Education:</strong> B.S. in Information Technology, SLIIT<br>
-            <strong>Contact:</strong> <a href="mailto:chinookz.main@gmail.com" class="text-blue-500 hover:underline">chinookz.main@gmail.com</a>
-          </p>
-        </div>
-        <div class="md:w-1/2 text-center">
-          <div class="inline-block p-6 bg-blue-50 rounded-lg shadow-lg">
-            <p class="text-blue-500 font-semibold">Professional Roles</p>
-            <p class="text-gray-600">Supplier Relations and Logistics Manager at Casper<br>Client Affairs Manager at FlameLens</p>
+        <div class="md:w-3/5">          <h2 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Hi, I'm Chinookz</h2>
+          <p class="text-lg text-gray-400 mt-4">Computer Science student building web & AI solutions</p>
+            <div class="mt-8 prose prose-invert">
+            <p class="text-gray-400 text-base leading-relaxed">
+              I'm a Computer Science student at SLIIT, driven by curiosity and a love for technology. 
+             passionate about innovative solutions in web and AI..
+            </p>
+            <p class="text-gray-400 text-base mt-4">
+              <strong>Education:</strong> B.S. in Information Technology, SLIIT<br>
+              
+              <strong>Contact:</strong> <a href="mailto:chinookz.main@gmail.com" class="text-pink-500 hover:underline">chinookz.main@gmail.com</a>
+            </p>
+          </div>          <div class="mt-6 p-6 rounded-lg border border-gray-700/50 bg-gray-800/20">            <h3 class="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-4">Professional Roles</h3>
+            <ul class="text-gray-300 text-sm space-y-2">
+              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mr-2"></span>
+                Supplier Relations and Logistics Manager at <a href="https://casper.ca" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1">Casper</a>
+              </li>              <li class="flex items-center">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mr-2"></span>
+                Client Affairs Manager at <a href="https://flamelens.com" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1">FlameLens</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 flex space-x-4">
+            <a href="https://github.com/chin00kz" target="_blank" class="social-icon text-gray-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/chinookz/" target="_blank" class="social-icon text-gray-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            </a>
+            <a href="https://x.com/chin00kz" target="_blank" class="social-icon text-gray-400">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#projects" class="modern-button px-8 py-3 text-white font-medium rounded-lg text-center">View My Projects</a>
+            <a href="mailto:chinookz.main@gmail.com" class="px-8 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition text-center">Get in Touch</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">My Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Project Card 1 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-2">TraviGo</h3>
-          <p class="text-gray-600 mb-4">
+  </section>  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-gradient-to-b from-[#0B1120] to-[#1a1f2e]">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 text-center mb-6">My Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">        <a href="https://github.com/chin00kz/TraviGO" target="_blank" class="project-card p-6 rounded-lg bg-[#151825]transition-all duration-300 border border-gray-700/50 hover:border-pink-500 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-pink-500/10">
+          <h3 class="text-xl font-medium text-gray-100">TraviGo</h3>
+          <p class="text-gray-400 text-sm mt-2">
             A full-stack tourism management system built with the MERN stack, allowing users to book hotels, rent vehicles, and hire tour guides, with an admin panel for platform management.
-          </p>
-          <a href="https://github.com/RomeshCG/TraviGo" target="_blank" class="text-pink-500 font-semibold hover:underline">View Project</a>
-        </div>
-        <!-- Project Card 2 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-pink-500/50 transition">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Lifeline Medical Portal</h3>
-          <p class="text-gray-600 mb-4">
+          </p>          <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+        </a>        <a href="https://github.com/RomeshCG/Lifeline-Online-Medical-Portal" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
+          <h3 class="text-xl font-medium text-gray-100">Lifeline Medical Portal</h3>
+          <p class="text-gray-400 text-sm mt-2">
             A comprehensive platform to streamline healthcare services, facilitating patient care, appointment management, feedback submission, and user administration.
           </p>
-          <a href="https://github.com/RomeshCG/Lifeline-Online-Medical-Portal" target="_blank" class="text-blue-500 font-semibold hover:underline">View Project</a>
-        </div>
-        <!-- Project Card 3 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Evently</h3>
-          <p class="text-gray-600 mb-4">
+          <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+        </a>
+        <a href="https://github.com/RomeshCG/Evently" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
+          <h3 class="text-xl font-medium text-gray-100">Evently</h3>
+          <p class="text-gray-400 text-sm mt-2">
             A web-based event management system for booking and managing weddings, allowing users to view and update bookings, with admin capabilities to manage events and services.
           </p>
-          <a href="https://github.com/RomeshCG/Evently" target="_blank" class="text-pink-500 font-semibold hover:underline">View Project</a>
-        </div>
-        <!-- Project Card 4 -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-pink-500/50 transition">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Coinme</h3>
-          <p class="text-gray-600 mb-4">
+          <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+        </a>
+        <a href="#" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
+          <h3 class="text-xl font-medium text-gray-100">Coinme</h3>
+          <p class="text-gray-400 text-sm mt-2">
             A Kotlin-based Android app for tracking budgets, helping users manage their finances efficiently.
           </p>
-          <a href="#" target="_blank" class="text-blue-500 font-semibold hover:underline">View Project</a>
-        </div>
+          <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+        </a>
       </div>
     </div>
   </section>
-
   <!-- Footer -->
-  <footer class="py-8 bg-blue-50 text-center">
-    <p class="text-gray-600">© 2025 Chinookz. All rights reserved.</p>
-    <div class="mt-4 space-x-4">
-      <a href="https://github.com/chin00kz" target="_blank" class="text-gray-600 hover:text-blue-500">GitHub</a>
-      <a href="https://www.linkedin.com/in/chanukadw/" target="_blank" class="text-gray-600 hover:text-pink-500">LinkedIn</a>
-      <a href="https://x.com/chin00kz" target="_blank" class="text-gray-600 hover:text-blue-500">Twitter</a>
+  <footer class="py-6 bg-gray-900 text-center">
+    <p class="text-gray-400 text-sm">© 2025 Chinookz. All rights reserved.</p>    <div class="mt-2 space-x-4">
+      <a href="https://github.com/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">GitHub</a>
+      <a href="https://www.linkedin.com/in/chinookz/" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">LinkedIn</a>
+      <a href="https://x.com/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">Twitter</a>
+      <a href="https://open.spotify.com/user/jlffiofhw5ph08qw60ke56pou" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">Spotify</a>
     </div>
   </footer>
 
   <script>
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
