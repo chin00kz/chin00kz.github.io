@@ -8,12 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/chin00kz/chin00kz.github.io/main/C.jpg">
   <style>
-    /* Main View Styles */
-    body {
+    /* Main View Styles */    body {
       font-family: 'Poppins', sans-serif;
       background-color: #0B1120;
       color: #F9FAFB;
       line-height: 1.6;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     #main-view, #minimal-view {
@@ -61,9 +66,26 @@
     }
     .x-link-wrapper:hover ~ a {
       transform: translateX(115px);
-    }
-    .social-icon:hover {
+    }    .social-icon:hover {
       color: #EC4899;
+      filter: drop-shadow(0 0 4px rgba(236, 72, 153, 0.6));
+      transform: scale(1.05);
+      transition: color 0.2s ease, filter 0.3s ease, transform 0.2s ease;
+    }
+    
+    .sponsor-icon:hover {
+      color: #EC4899;
+      filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.8));
+      transform: scale(1.1);
+      animation: heartBeat 1.5s infinite;
+    }
+    
+    @keyframes heartBeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.1); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
     }
     .project-card {
       position: relative;
@@ -75,29 +97,53 @@
       text-decoration: none;
       display: block;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    .project-card:hover {
+    }    .project-card:hover {
       transform: translateY(-3px);
       border-color: #EC4899;
-      box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.15);
+      box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.15), 0 0 5px rgba(236, 72, 153, 0.3);
     }
-    .profile-frame {
+    
+    .project-card:hover .text-pink-500 {
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }    .profile-frame {
       position: relative;
       padding: 3px;
       border-radius: 50%;
       background: linear-gradient(135deg, #EC4899, #8B5CF6);
       transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
+    }
+    .profile-frame:hover {
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+      transform: translateY(-5px);
     }
     .profile-frame img {
       border: 3px solid #1F2937;
       transition: transform 0.3s ease;
       animation: breathing 8s ease-in-out infinite;
-    }
-    @keyframes breathing {
+    }    @keyframes breathing {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 8s ease infinite;
+    }
+    
     .profile-frame:hover img {
       transform: scale(1.03);
     }
@@ -192,13 +238,23 @@
       align-items: flex-start;
       gap: 1.5rem;
       margin-bottom: 2rem;
-    }
-      .minimal-profile-img {
+    }    .minimal-profile-img {
       width: 100px;
       height: 100px;
       border-radius: 3px;
       object-fit: cover;
       opacity: 0.9;
+      transition: all 0.3s ease;
+      filter: grayscale(30%);
+      border: 2px solid transparent;
+    }
+    
+    .minimal-profile-img:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+      border-color: #EC4899;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
     }.minimal-header-content h1 {
       font-size: 2.2rem;
       font-weight: 600;
@@ -241,14 +297,18 @@
     }
     .minimal-projects li {
       margin-bottom: 0.5rem;
-    }
-    .minimal-projects a {
+    }    .minimal-projects a {
       color: #ffffff;
       text-decoration: none;
       border-bottom: 1px solid #333;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding-bottom: 1px;
     }
     .minimal-projects a:hover {
-      border-bottom-color: #ffffff;
+      border-bottom-color: #EC4899;
+      color: #EC4899;
+      transform: translateX(3px);
     }
     .minimal-social {
       margin-top: 2rem;
@@ -257,13 +317,14 @@
       display: flex;
       gap: 1rem;
       justify-content: flex-start;
-    }
-    .minimal-social a {
+    }    .minimal-social a {
       color: #808080;
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, filter 0.3s ease, transform 0.2s ease;
     }
     .minimal-social a:hover {
       color: #ffffff;
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+      transform: scale(1.1);
     }
     .minimal-social svg {
       width: 16px;
@@ -397,9 +458,14 @@
       opacity: 1;
       transform: translateX(0);
     }
-    
-    .footer-links a {
+      .footer-links a {
       white-space: nowrap;
+      transition: color 0.2s ease, filter 0.3s ease, transform 0.2s ease;
+    }
+    
+    .footer-links a:hover {
+      filter: drop-shadow(0 0 3px rgba(236, 72, 153, 0.5));
+      transform: scale(1.05);
     }
     
     .x-link-wrapper ~ * {
@@ -418,8 +484,11 @@
   <nav class="fixed top-0 w-full py-4 z-10">
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
       <button onclick="goToMainView()" class="text-xl font-semibold text-gray-100 nav-name transition-colors duration-300 cursor-pointer">Chinookz</button>      <div class="space-x-6 flex items-center">
-        <a href="#projects" class="text-gray-400 hover:text-pink-500 transition-colors duration-300">Projects</a>        <button id="toggle-minimal" class="text-gray-400 hover:text-pink-500 transition-all duration-300 flex items-center group">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="#projects" class="text-gray-400 hover:text-pink-500 transition-colors duration-300 relative group">
+          Projects
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pink-500 transition-all duration-300 group-hover:w-full"></span>
+        </a>        <button id="toggle-minimal" class="text-gray-400 hover:text-pink-500 transition-all duration-300 flex items-center group relative p-2 hover:bg-gray-800/30 rounded-md">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path class="transition-all duration-300 group-hover:stroke-pink-500" d="M4 4h4v4H4zM12 4h8M4 10h16M4 16h4v4H4zM12 16h8" 
                   stroke="currentColor" 
                   stroke-width="2" 
@@ -453,32 +522,28 @@
               <img src="https://raw.githubusercontent.com/chin00kz/chin00kz.github.io/main/IMG_20250325_161107_650~3.jpg" alt="Profile" class="w-72 h-72 rounded-full object-cover">
             </div>
           </div>
-          <div class="md:w-3/5">
-            <h2 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Hi, I'm Chinookz</h2>
+          <div class="md:w-3/5">            <h2 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 animate-gradient">Hi, I'm Chinookz</h2>
             <p class="text-lg text-gray-400 mt-4">Computer Science student building web & AI solutions</p>
             <div class="mt-8 prose prose-invert">
               <p class="text-gray-400 text-base leading-relaxed">
                 I'm a Computer Science student at SLIIT, driven by curiosity and a love for technology. 
                 passionate about innovative solutions in web and AI.
-              </p>
-              <p class="text-gray-400 text-base mt-4">                <strong>Education:</strong> BSc(Hons) in Information Technology, <a href="https://www.sliit.lk/about/about-sliit/" target="_blank" class="text-pink-500 hover:text-pink-400">SLIIT</a><br>
-                <strong>Contact:</strong> <a href="mailto:chinookz.main@gmail.com" class="text-pink-500 hover:underline">chinookz.main@gmail.com</a>
+              </p>              <p class="text-gray-400 text-base mt-4">                <strong>Education:</strong> BSc(Hons) in Information Technology, <a href="https://www.sliit.lk/about/about-sliit/" target="_blank" class="text-pink-500 hover:text-pink-400 relative inline-block group">SLIIT<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 group-hover:w-full transition-all duration-300"></span></a><br>
+                <strong>Contact:</strong> <a href="mailto:chinookz.main@gmail.com" class="text-pink-500 hover:text-pink-400 relative inline-block group">chinookz.main@gmail.com<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 group-hover:w-full transition-all duration-300"></span></a>
               </p>
             </div>
             <div class="mt-6 p-6 rounded-lg border border-gray-700/50 bg-gray-800/20">
-              <h3 class="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-4">Professional Roles</h3>
-              <ul class="text-gray-300 text-sm space-y-2">
+              <h3 class="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-4">Professional Roles</h3>              <ul class="text-gray-300 text-sm space-y-2">
                 <li class="flex items-center">
                   <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mr-2"></span>
-                  Supplier Relations and Logistics Manager at <a href="https://casper.ca" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1">Casper</a>
+                  Supplier Relations and Logistics Manager at <a href="https://casper.ca" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1 relative inline-block group">Casper<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 group-hover:w-full transition-all duration-300"></span></a>
                 </li>
                 <li class="flex items-center">
                   <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mr-2"></span>
-                  Client Affairs Manager at <a href="https://flamelens.com" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1">FlameLens</a>
+                  Client Affairs Manager at <a href="https://flamelens.com" target="_blank" class="text-pink-500 hover:text-pink-400 ml-1 relative inline-block group">FlameLens<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 group-hover:w-full transition-all duration-300"></span></a>
                 </li>
               </ul>
-            </div>
-            <div class="mt-6 flex space-x-4">
+            </div>            <div class="mt-6 flex space-x-4 items-center">
               <a href="https://github.com/chin00kz" target="_blank" class="social-icon text-gray-400">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
               </a>
@@ -489,10 +554,14 @@
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </a>
-            </div>
-            <div class="mt-8 flex flex-col sm:flex-row gap-4">
-              <a href="#projects" class="modern-button px-8 py-3 text-white font-medium rounded-lg text-center">View My Projects</a>
-              <a href="mailto:chinookz.main@gmail.com" class="px-8 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition text-center">Get in Touch</a>
+              <a href="https://github.com/sponsors/chin00kz" target="_blank" class="social-icon text-gray-400 hover:text-pink-500 sponsor-icon">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </a>
+            </div>            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="#projects" class="modern-button px-8 py-3 text-white font-medium rounded-lg text-center bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20">View My Projects</a>
+              <a href="mailto:chinookz.main@gmail.com" class="px-8 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20 text-center">Get in Touch</a>
             </div>
           </div>
         </div>
@@ -502,52 +571,61 @@
     <section id="projects" class="py-16 bg-gradient-to-b from-[#0B1120] to-[#1a1f2e]">
       <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 text-center mb-6">My Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <a href="https://github.com/chin00kz/TraviGO" target="_blank" class="project-card p-6 rounded-lg bg-[#151825] transition-all duration-300 border border-gray-700/50 hover:border-pink-500 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-pink-500/10">
-            <h3 class="text-xl font-medium text-gray-100">TraviGO</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">          <a href="https://github.com/chin00kz/TraviGO" target="_blank" class="project-card p-6 rounded-lg bg-[#151825] transition-all duration-300 border border-gray-700/50 hover:border-pink-500 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-pink-500/10">
+            <h3 class="text-xl font-medium text-gray-100 group-hover:text-pink-100 transition-colors duration-300">TraviGO</h3>
             <p class="text-gray-400 text-sm mt-2">
               A full-stack tourism management system built with the MERN stack, allowing users to book hotels, rent vehicles, and hire tour guides, with an admin panel for platform management.
             </p>
-            <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+            <span class="text-pink-500 font-medium mt-2 inline-block relative group">
+              View Project
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+            </span>
           </a>          <a href="https://github.com/chin00kz/LifeLine" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
-            <h3 class="text-xl font-medium text-gray-100">Lifeline Medical Portal</h3>
+            <h3 class="text-xl font-medium text-gray-100 group-hover:text-pink-100 transition-colors duration-300">Lifeline Medical Portal</h3>
             <p class="text-gray-400 text-sm mt-2">
               A comprehensive platform to streamline healthcare services, facilitating patient care, appointment management, feedback submission, and user administration.
             </p>
-            <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
-          </a>
-          <a href="https://github.com/chin00kz/Evently" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
-            <h3 class="text-xl font-medium text-gray-100">Evently</h3>
+            <span class="text-pink-500 font-medium mt-2 inline-block relative group">
+              View Project
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+            </span>
+          </a>          <a href="https://github.com/chin00kz/Evently" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
+            <h3 class="text-xl font-medium text-gray-100 group-hover:text-pink-100 transition-colors duration-300">Evently</h3>
             <p class="text-gray-400 text-sm mt-2">
               A web-based event management system for booking and managing weddings, allowing users to view and update bookings, with admin capabilities to manage events and services.
             </p>
-            <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+            <span class="text-pink-500 font-medium mt-2 inline-block relative group">
+              View Project
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+            </span>
           </a>          <a href="https://github.com/chin00kz/BudgetTrackerKotlin" target="_blank" class="project-card p-6 rounded-lg transition-all duration-300 border border-gray-700/50 hover:border-pink-500/50 transform hover:-translate-y-1">
-            <h3 class="text-xl font-medium text-gray-100">Coinme</h3>
+            <h3 class="text-xl font-medium text-gray-100 group-hover:text-pink-100 transition-colors duration-300">Coinme</h3>
             <p class="text-gray-400 text-sm mt-2">
               A Kotlin-based Android app for tracking budgets, helping users manage their finances efficiently.
             </p>
-            <span class="text-pink-500 font-medium mt-2 inline-block">View Project</span>
+            <span class="text-pink-500 font-medium mt-2 inline-block relative group">
+              View Project
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span>
+            </span>
           </a>
         </div>
       </div>
-    </section>
-    <!-- Footer -->    <footer class="py-6 bg-gray-900 text-center">
+    </section>    <!-- Footer -->    <footer class="py-6 bg-gray-900 text-center">
       <p class="text-gray-400 text-sm">© 2025 Chinookz. All rights reserved.</p>
       <div class="mt-2 flex items-center justify-center gap-4 footer-links">
-        <a href="https://github.com/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">GitHub</a>
-        <a href="https://www.linkedin.com/in/chinookz/" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">LinkedIn</a>
+        <a href="https://github.com/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">GitHub</a>        <a href="https://www.linkedin.com/in/chinookz/" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">LinkedIn</a>
         <div class="x-link-wrapper">
           <a href="https://x.com/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm x-link">X</a>
         </div>
         <a href="https://open.spotify.com/user/jlffiofhw5ph08qw60ke56pou" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm transition-transform duration-300">Spotify</a>
+        <a href="https://github.com/sponsors/chin00kz" target="_blank" class="text-gray-400 hover:text-pink-500 text-sm">Sponsor</a>
       </div>
     </footer>
   </div>  <!-- Minimal View -->  <div id="minimal-view">    
     <nav class="fixed top-0 w-full z-10">
       <div class="max-w-6xl mx-auto">
-        <button onclick="goToMainView()" class="nav-name cursor-pointer">Chinookz</button>        <button id="toggle-full" class="text-gray-400 hover:text-pink-500 transition-all duration-300 flex items-center group">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button onclick="goToMainView()" class="nav-name cursor-pointer">Chinookz</button>        <button id="toggle-full" class="text-gray-400 hover:text-pink-500 transition-all duration-300 flex items-center group relative p-2 hover:bg-gray-800/30 rounded-md">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect class="transition-all duration-300 group-hover:stroke-pink-500" 
                   x="4" y="4" 
                   width="16" height="16" 
@@ -588,10 +666,9 @@
           </div>
         </header>
 
-        <section class="minimal-section">          <h2>Work</h2>
-          <p><strong>Supplier Relations & Logistics Manager</strong> • <a href="https://casper.ca" target="_blank" class="text-white hover:text-pink-500 transition-colors duration-300">Casper</a></p>
+        <section class="minimal-section">          <h2>Work</h2>          <p><strong>Supplier Relations & Logistics Manager</strong> • <a href="https://casper.ca" target="_blank" class="text-white hover:text-pink-500 transition-colors duration-300 relative inline-block group">Casper<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span></a></p>
           <p>2023 – Present</p>
-          <p><strong>Client Affairs Manager</strong> • <a href="https://flamelens.com" target="_blank" class="text-white hover:text-pink-500 transition-colors duration-300">FlameLens</a></p>
+          <p><strong>Client Affairs Manager</strong> • <a href="https://flamelens.com" target="_blank" class="text-white hover:text-pink-500 transition-colors duration-300 relative inline-block group">FlameLens<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300"></span></a></p>
           <p>2022 – Present</p>
         </section>
 
@@ -617,8 +694,7 @@
           <p>AI/ML</p>
           <p>Kotlin</p>
         </section>
-          <section class="minimal-section">
-          <h2>Links</h2>
+          <section class="minimal-section">          <h2>Links</h2>
           <div class="minimal-social">
             <a href="https://github.com/chin00kz" target="_blank" rel="noopener noreferrer">
               <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -629,11 +705,15 @@
               <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
-            </a>
-            <a href="https://open.spotify.com/user/jlffiofhw5ph08qw60ke56pou" target="_blank" rel="noopener noreferrer">
+            </a>            <a href="https://open.spotify.com/user/jlffiofhw5ph08qw60ke56pou" target="_blank" rel="noopener noreferrer">
               <svg class="social-icon" fill="currentColor" viewBox="0 0 496 512">
                 <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8Z"/>
                 <path fill="currentColor" style="opacity: 0.1" d="M406.6 231.1c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3zm-31 76.2c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm-26.9 65.6c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4z"/>
+              </svg>
+            </a>
+            <a href="https://github.com/sponsors/chin00kz" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500">
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </a>
           </div>
